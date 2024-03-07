@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+   <meta charset="utf-8">
+   <title>COMP5347 Assignment One</title>
+   <link rel="stylesheet" href="index.css" />
+   <!-- We are deferring the script being loaded because we need the full html document to be loaded first -->
+   <script defer type="text/javascript" src="index.js"></script> 
+</head>
+<body>
+   <section id="title">
+      <h1>Cartoonopia</h1>
+   <h5>a random subtitle</h5>
+   </section>
+<section id="panel" class="background-image-blur-whitewash" >
+<div class="container">
+   <p id="filter_title">Filters</p>
+   <div id="strength" class="filters">
+      <p>Strength</p> 
+      <div class="filter_container">
+         <input type="number" id="minstrength" min="0" max="100" placeholder="Min" class="filter_input">
+         <input type="number" id="maxstrength" min="0" max="100" placeholder="Max" class="filter_input">
+      </div>
+   </div>
+   <div id="speed" class="filters">
+      <p>Speed</p> 
+      <div class="filter_container">
+         <input type="number" id="minspeed" min="0" max="100" placeholder="Min" class="filter_input">
+         <input type="number" id="maxspeed" min="0" max="100" placeholder="Max" class="filter_input">
+      </div>
+   </div>
+   <div id="skill" class="filters">
+      <p>Skill</p> 
+      <div class="filter_container">
+         <input type="number" id="minskill" min="0" max="100" placeholder="Min" class="filter_input">
+         <input type="number" id="maxskill" min="0" max="100" placeholder="Max" class="filter_input">
+      </div>
+   </div>
+   <div id="fear_factor" class="filters">
+      <p>Fear Factor</p> 
+      <div class="filter_container">
+         <input type="number" id="minfear_factor" min="0" max="100" placeholder="Min" class="filter_input">
+         <input type="number" id="maxfear_factor" min="0" max="100" placeholder="Max" class="filter_input">
+      </div>
+   </div>
+   <div id="power" class="filters">
+      <p>Power</p> 
+      <div class="filter_container">
+         <input type="number" id="minpower" min="0" max="100" placeholder="Min" class="filter_input">
+         <input type="number" id="maxpower" min="0" max="100" placeholder="Max" class="filter_input">
+      </div>
+   </div>
+   <div id="intelligence" class="filters">
+      <p>Intelligence</p> 
+      <div class="filter_container">
+         <input type="number" id="minintelligence" min="0" max="100" placeholder="Min" class="filter_input">
+         <input type="number" id="maxintelligence" min="0" max="100" placeholder="Max" class="filter_input">
+      </div>
+   </div>
+   <div id="wealth" class="filters">
+      <p>Wealth</p> 
+      <div class="filter_container">
+         <input type="number" id="minwealth" min="0" max="100" placeholder="Min" class="filter_input">
+         <input type="number" id="maxwealth" min="0" max="100" placeholder="Max" class="filter_input">
+      </div>
+   </div>
+   <input type="button" id="filter_button" value="Apply Filter">
+</div>
+<div id="tables">
+   <input id="search-input" type="text" placeholder="Search for a character">
+   <table id="character-table">
+      <thead><tr>
+         <th>Name</th>
+         <th>Strength</th>
+         <th>Speed</th>
+         <th>Skill</th>
+         <th>Fear Factor</th>
+         <th>Power</th>
+         <th>Intelligence</th>
+         <th>Wealth</th>
+         <th>Selected</th>
+      </tr></thead>
+      <tbody>
+
+      </tbody>
+      <!-- insert a row for each character here using javascript-->
+   </table>
+   <input type="button" id="compare" value="Compare">
+
+</div>
+<div id="previous_check" >
+   <p>previous check</p>
+   <table id="history">
+      <th>Character1</th>
+      <th>Character2</th>
+   </table>
+</div>
+</section>
+
+<section id="image" >
+   <div class="image_container" class="container">
+      <img src="images/background.jpg" class="ch_image" id="img1" alt="image1" width="200" height="200">
+      <p id="img_label1">Unknown</p> 
+   </div>
+   <p id="vs">VS</p>
+   <div class="image_container" >
+      <img src="images/background.jpg" class="ch_image" id="img2" alt="image2" width="200" height="200">
+      <p id="img_label2">Unknown</p> 
+   </div>
+   </section>
+<section id="comparison" class="background-image-blur-whitewash">
+   <div class="container"> 
+   <p id="comparison_title">Comparison</p>
+    <table id="comparison_table">
+      <tr>
+         <th>Character</th>
+         <th>Strength</th>
+         <th>Speed</th>
+         <th>Skill</th>
+         <th>Fear Factor</th>
+         <th>Power</th>
+         <th>Intelligence</th>
+         <th>Wealth</th>
+      </tr>
+      <tr>
+         <td id="Character1">Character1</td>
+         <td id="Strength1">0</td>
+         <td id="Speed1">0</td>
+         <td id="Skill1">0</td>
+         <td id="Fear_Factor1">0</td>
+         <td id="Power1">0</td>
+         <td id="Intelligence1">0</td>
+         <td id="Wealth1">0</td>
+      </tr>
+      <tr>
+         <td id="Character2">Character2</td>
+         <td id="Strength2">0</td>
+         <td id="Speed2">0</td>
+         <td id="Skill2">0</td>
+         <td id="Fear_Factor2">0</td>
+         <td id="Power2">0</td>
+         <td id="Intelligence2">0</td>
+         <td id="Wealth2">0</td>
+      </tr>
+   </table></div>
+
+</section>
+ 
+</body>
+</html>
