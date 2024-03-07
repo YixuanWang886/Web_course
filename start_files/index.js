@@ -3,6 +3,13 @@ document.getElementById('compare').addEventListener('click',compare);
 document.getElementById("filter_button").addEventListener("click", setFilter);
 let characterList = []; // character list container
 var inputs = document.querySelectorAll('.filter_input');
+var attrs = ['strength', 'speed', 'skill', 'fear_factor', 'power', 'intelligence', 'wealth'];
+const characterTds = document.querySelectorAll('td[id*="character"]');
+
+// Add the class "refresh content" to each selected <td> element
+characterTds.forEach(td => {
+   td.classList.add('refresh');
+});
 
 inputs.forEach(function(input) {
     input.addEventListener('input', function() {
@@ -63,22 +70,58 @@ function compare_stats(selectedCharacters){
     var name2 = selectedCharacters[1];
     var character1 = characterList.find(x => x.name === name1);
     var character2 = characterList.find(x => x.name === name2);
-    table_insert(1, character1);
-    table_insert(2, character2);
-}
-    function table_insert(row, character){
-        var table = document.getElementById('comparison_table');
-        var tbody = table.getElementsByTagName('tbody')[0];
-        var row = tbody.getElementsByTagName('tr')[row];
-        row.cells[0].innerHTML = character.name;
-        row.cells[1].innerHTML = character.strength;
-        row.cells[2].innerHTML = character.speed;
-        row.cells[3].innerHTML = character.skill;
-        row.cells[4].innerHTML = character.fear_factor;
-        row.cells[5].innerHTML = character.power;
-        row.cells[6].innerHTML = character.intelligence;
-        row.cells[7].innerHTML = character.wealth;
+    var winner=[]
+    for (attr_index in attrs){
+        var attr=attrs[attr_index];
+        var value1 = character1[attr];
+        var value2 = character2[attr];
+        if (value1 > value2){
+            winner.push(0)
+        }
+        else if (value1 < value2){
+            winner.push(1)
+        }
+        else{
+            winner.push(2)
+        }
     }
+    console.log(winner);
+set_winner(winner);    
+}   
+
+
+function set_winner(winner){
+var compare_table = document.getElementById('comparison_table');
+var tbody = compare_table.getElementsByTagName('tbody')[0];
+var refresh = document.querySelectorAll('.refresh');
+refresh.forEach(function(td) {
+    td.style.backgroundColor = "white";
+    td.innerHTML = "";
+});
+
+for (i=0;i<winner.length;i++){
+    if(winner[i]==0){
+        var cell=tbody.rows[i].cells[0];
+        cell.style.backgroundColor = "green";
+        cell.innerHTML = "<img src='images/tick.png' width='20' height='20'>";
+
+}
+    else if(winner[i]==1){
+        var cell=tbody.rows[i].cells[2];
+        cell.style.backgroundColor = "green";
+        cell.innerHTML = "<img src='images/tick.png' width='20' height='20'>";
+    }
+    else{
+        var cell1=tbody.rows[i].cells[0];
+        var cell2=tbody.rows[i].cells[2];
+        cell1.style.backgroundColor = "gray";
+        cell2.style.backgroundColor = "gray";
+        cell1.innerHTML = "Draw";
+        cell2.innerHTML = "Draw";
+    }
+}}
+
+
 
 
 function post_names(selectedCharacters){
@@ -113,10 +156,9 @@ function getJsonObject(path, success, error) {
 }
 
 function setFilter(){
-    var filters = ['strength', 'speed', 'skill', 'fear_factor', 'power', 'intelligence', 'wealth'];
     var filterValues = {};
 
-    filters.forEach(function(filter) {
+    attrs.forEach(function(filter) {
         var minInput = document.getElementById('min' + filter);
         var maxInput = document.getElementById('max' + filter);
         filterValues[filter] = {

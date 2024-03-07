@@ -38,6 +38,11 @@ section{
    border: 1px solid black;
    margin: 10px;
 }
+#comparison_table {
+   border-collapse: collapse;
+   margin: 10px;
+   min-width: 50vw; 
+}
 
 /* main frame */
 #panel{
