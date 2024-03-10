@@ -140,7 +140,7 @@ for (i=0;i<winner.length;i++){
     }
 }}
 
-
+// read the json file
 
 function getJsonObject(path, success, error) {
     var xhr = new XMLHttpRequest();
@@ -156,7 +156,7 @@ function getJsonObject(path, success, error) {
     xhr.open("GET", path, true);
     xhr.send();
 }
-
+// apply filter to the character list
 function setFilter(){
     var filterValues = {};
 
@@ -171,7 +171,7 @@ function setFilter(){
     var filteredList = filterCharacters(filterValues);
     updateTable(filteredList);
 }
-
+// return filtred characters to update the table
 function filterCharacters(filterValues){
     // check(filterValues);
     var pass_list = [];
@@ -194,12 +194,16 @@ function filterCharacters(filterValues){
     return pass_list;
 
 }
-function check(filterValues){
-    for (var key in filterValues){
-        if (filterValues[key].min || filterValues[key].max){
-            console.log(key + " min: " + filterValues[key].min + " max: " + filterValues[key].max);
-        }
-    }}
+
+
+// function check(filterValues){
+//     for (var key in filterValues){
+//         if (filterValues[key].min || filterValues[key].max){
+//             console.log(key + " min: " + filterValues[key].min + " max: " + filterValues[key].max);
+//         }
+//     }}
+
+// process the search input
 function processSearch(event) {
         var searchValue = event.target.value;
         search(searchValue);
