@@ -1,16 +1,16 @@
 document.getElementById("search-input").addEventListener("input", processSearch);
-document.getElementById('compare').addEventListener('click',compare);
-document.getElementById("filter_button").addEventListener("click", setFilter);
-let characterList = []; // character list container
+let characterList = []; 
 var inputs = document.querySelectorAll('.filter_input');
 var attrs = ['strength', 'speed', 'skill', 'fear_factor', 'power', 'intelligence', 'wealth'];
 const characterTds = document.querySelectorAll('td[id*="character"]');
-
-// Add the class "refresh content" to each selected <td> element
-characterTds.forEach(td => {
-   td.classList.add('refresh');
+// keep number input only
+document.querySelectorAll('.filter_input').forEach(function(input) {
+    input.addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    });
 });
 
+// set the max and min value for each input
 inputs.forEach(function(input) {
     input.addEventListener('input', function() {
         var value = parseInt(this.value);
@@ -24,8 +24,10 @@ inputs.forEach(function(input) {
             
         }
     });
+    input.addEventListener('input', setFilter);
 });
 
+// the main function to compare the characters when checkbox is checked
 function compare(){
     var checkedBoxes = document.querySelectorAll('input[name="selectBox"]:checked');
     if (checkedBoxes.length < 2) {
@@ -48,7 +50,7 @@ function compare(){
 }
 }
 
-
+// post images and names of the selected characters
 function post_images(selectedCharacters){
     var name1 = selectedCharacters[0];
     var name2 = selectedCharacters[1];
@@ -65,6 +67,20 @@ function post_images(selectedCharacters){
     img1.src = img1_path;
     img2.src = img2_path;
 }
+// change the name label
+function post_names(selectedCharacters){
+    var name1 = selectedCharacters[0];
+    var name2 = selectedCharacters[1];
+    var table=document.getElementById('history');
+    var tbody=table.getElementsByTagName('tbody')[0];
+    var row=tbody.insertRow(-1);
+    var cell1=row.insertCell(0);
+    var cell2=row.insertCell(1);
+    cell1.innerHTML = name1;
+    cell2.innerHTML = name2;
+}
+
+// finish the last table to show the comparison result
 function compare_stats(selectedCharacters){
     var name1 = selectedCharacters[0];
     var name2 = selectedCharacters[1];
@@ -89,7 +105,10 @@ function compare_stats(selectedCharacters){
 set_winner(winner);    
 }   
 
-
+characterTds.forEach(td => {
+    td.classList.add('refresh');
+ });
+// refresh and update the table content
 function set_winner(winner){
 var compare_table = document.getElementById('comparison_table');
 var tbody = compare_table.getElementsByTagName('tbody')[0];
@@ -123,23 +142,6 @@ for (i=0;i<winner.length;i++){
 
 
 
-
-function post_names(selectedCharacters){
-    var name1 = selectedCharacters[0];
-    var name2 = selectedCharacters[1];
-    var table=document.getElementById('history');
-    var tbody=table.getElementsByTagName('tbody')[0];
-    var row=tbody.insertRow(-1);
-    var cell1=row.insertCell(0);
-    var cell2=row.insertCell(1);
-    cell1.innerHTML = name1;
-    cell2.innerHTML = name2;
-}
-
-function processSearch(event) {
-  var searchValue = event.target.value;
-  search(searchValue);
-}
 function getJsonObject(path, success, error) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -198,7 +200,10 @@ function check(filterValues){
             console.log(key + " min: " + filterValues[key].min + " max: " + filterValues[key].max);
         }
     }}
-
+function processSearch(event) {
+        var searchValue = event.target.value;
+        search(searchValue);
+}
 function search(searchValue){
     var searchResult = [];
     for (var i = 0; i < characterList.length; i++) {
@@ -241,6 +246,7 @@ function updateTable(characterList){
             var checkedBoxes = document.querySelectorAll('input[name="selectBox"]:checked');
             if (checkedBoxes.length >= 2) {
                 var uncheckedBoxes = document.querySelectorAll('input[name="selectBox"]:not(:checked)');
+                compare();
                 uncheckedBoxes.forEach(function(box) {
                     box.disabled = true;
                 });

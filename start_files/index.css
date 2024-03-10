@@ -1,123 +1,107 @@
-﻿h1, h2, h3, nav, footer {
- font-family: Georgia, Cambria, "Times New Roman", serif;
-}
-body {
-   font-family: "Lucida Sans"  Verdana Arial sans-serif;
+﻿body {
+   font-family: "Lucida Sans", Verdana, Arial, sans-serif;
    font-size: 80%;
-   /* background-image: url("images/background.jpg"); */
-
 }
-section{
 
+h1, h2, h3, nav, footer {
+   font-family: Georgia, Cambria, "Times New Roman", serif;
+}
+
+#character-table, #comparison_table {
+   border-collapse: collapse;
+   padding: 10px;
+   margin: 10px;
+}
+
+#comparison_table {
+   min-width: 50vw; 
+}
+
+#comparison_table td, #comparison_table th {
+   color: #fff;
+   background-color: rgb(43, 31, 31);
+}
+
+section {
    border: 1px solid grey;
    display: flex;
    justify-content: center;
    align-items: center;
-   }
-   
-   .background-image-blur-whitewash::after {
-      content: "";
-      background-image: url("images/background.jpg");
-      filter: blur(15px) contrast(0.2) brightness(1.7);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      
-   }
-   
-   .background-image-blur-whitewash {
-      position: relative;
-   }
-
-#character-table {
-   border-collapse: collapse;
-   padding: 10px;
-   border: 1px solid black;
-   margin: 10px;
-}
-#comparison_table {
-   border-collapse: collapse;
-   margin: 10px;
-   min-width: 50vw; 
 }
 
-/* main frame */
-#panel{
+.background-image-blur-whitewash::after {
+   content: "";
+   background-image: url("images/background.jpg");
+   filter: blur(15px) contrast(0.2) brightness(1.7);
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: -1;
+}
+
+.background-image-blur-whitewash {
+   position: relative;
+}
+
+#panel {
    display: grid;
    grid-template-columns: 1fr 4fr 1fr;
    flex-direction: row;
    justify-content: space-around;
    align-items: center;
-   /* margin: 10px 10px 50px 50px; */
-   padding: 50px 50px 50px 50px;
+   padding: 50px;
    border: 1px solid rgb(0, 0, 0);
    border-radius: 10px;
 }
-#title{
-   text-align: center;
-   padding: 50px 50px 50px 50px;
-   background-color: black;
-   flex-direction: column;
-}
 
-#image{
-   background-color: rgb(0, 0, 0);
+#title, #image, #comparison {
+   background-color: black;
    color: rgb(255, 255, 255);
    text-align: center;
-   /* margin: 10px 10px 50px 50px; */
-   padding: 50px 50px 50px 50px;
+   padding: 50px;
    border: 1px solid rgb(0, 0, 0);
+}
+
+#image {
    justify-content: space-around;
    display: flex;
 }
 
-
-.ch_image{
+.ch_image {
    border-radius: 50%;
    border: 1px solid rgb(0, 0, 0);
-
 }
-#search-input{
+
+#search-input {
    text-align: center;
-   margin: 10px 10px 10px 10px;
+   margin: 10px;
    border: 1px solid rgb(0, 0, 0);
+}
 
-}
-#comparison{
-   text-align: center;
-   /* margin: 10px 10px 50px 50px; */
-   padding: 50px 50px 50px 50px;
-}
-#comparison th{
+#comparison th, #comparison td {
    font-family: 'Courier New', Courier, monospace;
    font-size: large;
-   padding: 10px 10px 10px 10px;
+   padding: 10px;
 }
-#comparison td{
-   font-family: 'Courier New', Courier, monospace;
-   font-size: large;
-   padding: 10px 10px 10px 10px;
-}
-/* component */
-#title h1{
+
+#title h1 {
    font-size: 80px;
    color: #fff;
-   padding: 20px 20px 20px 20px;
+   padding: 20px;
    border: 1px solid rgb(0, 0, 0);
 }
-#title h5{
+
+#title h5 {
    font-family: 'Trebuchet MS', sans-serif;
    font-size: 20px;
    color: #fff;
    margin: 0;
-   padding: 20px 20px 20px 20px;
+   padding: 20px;
 }
 
-.filters{
-   
+.filters {
    display: flex;
    align-items: center;
    padding: 10px;
@@ -126,37 +110,35 @@ section{
    border-collapse: collapse;
    overflow: auto;
 }
+
 .filter_container {
    display: flex;
    gap: 10px;
 }
-.filters input{
-margin: 0 0 10px 10px;}
-#tables{
+
+.filters input {
+   margin: 0 0 10px 10px;
+}
+
+#tables {
    background-color: rgb(255, 255, 255);
    display: flex;
    flex-direction: column;
    border: 1px solid rgb(0, 0, 0);
    text-align: center;
-   overflow: auto; /* Add this line */
-   min-width: 50vw; /* Minimum width */
-   max-width: 90vw; /* Maximum width */
+   overflow: auto; 
+   min-width: 50vw; 
+   max-width: 90vw; 
 }
-#tables thead{
+
+#tables thead, #tables tbody {
    font-family: 'Courier New', Courier, monospace;
    font-size: large;
    margin: auto;
    padding: auto;
-   /* border: 1px solid rgb(0, 0, 0); */
 }
-#tables tbody{
-   font-family: 'Courier New', Courier, monospace;
-   font-size: large;
-   margin: auto;
-   padding: auto;
-   /* border: 1px solid rgb(0, 0, 0); */
-}
-#previous_check{
+
+#previous_check {
    background-color: rgb(255, 255, 255);
    min-height: 30vh;
    text-align: center;
@@ -164,21 +146,20 @@ margin: 0 0 10px 10px;}
    display: flex;
    flex-direction: column;
    border: 1px solid rgb(0, 0, 0);
-   margin: 20px 20px 20px 20px;
+   margin: 20px;
 }
 
-.container{
+.container {
    background-color: rgb(255, 255, 255);
-   padding: 10px 10px 10px 10px;
    display: flex;
    flex-direction: column;
    justify-content: space-between;
    border: 1px solid rgb(0, 0, 0);
-   margin: 20px 20px 20px 20px;
-   
+   margin: 20px;
 }
-#image p{
+
+#image p {
    font-family: 'Courier New', Courier, monospace;
    font-size: 2em;   
-   padding: 10px 10px 10px 10px;
+   padding: 10px;
 }
