@@ -1,17 +1,25 @@
 ﻿body {
-   font-family: "Lucida Sans", Verdana, Arial, sans-serif;
+   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    font-size: 80%;
 }
 
 h1, h2, h3, nav, footer {
-   font-family: Georgia, Cambria, "Times New Roman", serif;
+   font-family: sans-serif;
+}
+#comparison_table{
+   text-align: center;
+   border-collapse: collapse;
 }
 
-#character-table, #comparison_table {
-   border-collapse: collapse;
-   padding: 10px;
-   margin: 10px;
+#character-table {
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   min-width: 50vw; 
+   max-width: 90vw; 
+   table-layout: fixed; 
 }
+
 
 #comparison_table {
    min-width: 50vw; 
@@ -55,8 +63,16 @@ section {
    border: 1px solid rgb(0, 0, 0);
    border-radius: 10px;
 }
-
-#title, #image, #comparison {
+#comparison {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   align-items: center;
+   padding: 50px;
+   border: 1px solid rgb(0, 0, 0);
+   border-radius: 10px;
+}
+#title, #image {
    background-color: black;
    color: rgb(255, 255, 255);
    text-align: center;
@@ -75,45 +91,48 @@ section {
 }
 
 #search-input {
-   text-align: center;
+   text-align: left;
+   height: 3vw;
    margin: 10px;
    border: 1px solid rgb(0, 0, 0);
 }
 
 #comparison th, #comparison td {
-   font-family: 'Courier New', Courier, monospace;
    font-size: large;
    padding: 10px;
 }
+#title{
+   display: flex;
+   flex-direction: column;
 
+}
 #title h1 {
    font-size: 80px;
    color: #fff;
    padding: 20px;
    border: 1px solid rgb(0, 0, 0);
+
 }
 
 #title h5 {
-   font-family: 'Trebuchet MS', sans-serif;
    font-size: 20px;
    color: #fff;
    margin: 0;
    padding: 20px;
-}
 
+}
+#filter_title{
+   padding: 2%;
+   font-size: medium;}
 .filters {
    display: flex;
    align-items: center;
    padding: 10px;
    justify-content: space-between;
-   border: 1px solid rgb(0, 0, 0);
-   border-collapse: collapse;
-   overflow: auto;
 }
 
 .filter_container {
    display: flex;
-   gap: 10px;
 }
 
 .filters input {
@@ -121,28 +140,24 @@ section {
 }
 
 #tables {
-   background-color: rgb(255, 255, 255);
    display: flex;
    flex-direction: column;
-   border: 1px solid rgb(0, 0, 0);
-   text-align: center;
-   overflow: auto; 
+   text-align: left;
    min-width: 50vw; 
-   max-width: 90vw; 
-}
-
-#tables thead, #tables tbody {
-   font-family: 'Courier New', Courier, monospace;
-   font-size: large;
    margin: auto;
    padding: auto;
 }
 
+#tables th, #tables td {
+   width: 11.11%;
+}
+
 #previous_check {
    background-color: rgb(255, 255, 255);
-   min-height: 30vh;
+   overflow: auto;
+   height: 30vh;
    text-align: center;
-   width: 15vw;
+   min-width: 16vw;
    display: flex;
    flex-direction: column;
    border: 1px solid rgb(0, 0, 0);
@@ -159,7 +174,6 @@ section {
 }
 
 #image p {
-   font-family: 'Courier New', Courier, monospace;
    font-size: 2em;   
    padding: 10px;
 }
