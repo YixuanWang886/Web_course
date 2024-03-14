@@ -9,4 +9,5 @@ python -m SimpleHTTPServer
 python -m http.server
 
 This is gonna set up a server. You can access http://localhost:8000 to check your file
+The project link is https://github.com/YixuanWang886/Web_course/tree/remove_button
 
